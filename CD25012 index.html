@@ -1,0 +1,106 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Monitor - Tailwind CSS</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .num {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .gauge-fill {
+      transition: stroke-dasharray .6s ease, stroke .4s ease;
+    }
+
+    .chart-line {
+      transition: top .35s ease;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[#15181c] text-[#e9e6de] px-5 py-8">
+
+<div class="max-w-[920px] mx-auto">
+
+  <!-- HEADER -->
+  <header class="flex flex-wrap justify-between items-end gap-4 pb-[18px] mb-[22px] border-b border-[#2b3038]">
+
+    <div>
+      <h1 class="text-[15px] font-semibold tracking-wide mb-1">
+        SYSTEM POWER MONITOR
+      </h1>
+
+      <div class="text-[12.5px] text-[#868c96] font-mono">
+        unit&nbsp; PWR-04A &nbsp;·&nbsp; sampling every 900ms
+      </div>
+    </div>
+
+    <div id="statusPill"
+         class="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-[#2b3038] bg-[#1c2025] font-mono text-[11.5px] tracking-wide">
+
+      <div id="statusDot"
+           class="w-[7px] h-[7px] rounded-full bg-[#f2a93c] shadow-[0_0_8px_#f2a93c]">
+      </div>
+
+      <span id="statusText">DISCHARGING</span>
+    </div>
+
+  </header>
+
+
+  <!-- CONTROLS -->
+  <div class="flex flex-wrap gap-2.5 mb-6">
+
+    <button id="chargeBtn"
+            class="ctl bg-[#1c2025] border border-[#2b3038] text-[#e9e6de]
+                   text-[13px] font-medium px-4 py-[9px] rounded
+                   hover:border-[#4d525a] transition">
+      Plug in charger
+    </button>
+
+    <div class="flex items-center gap-2.5 bg-[#1c2025] border border-[#2b3038]
+                rounded px-3.5 py-2 flex-1 min-w-[200px]">
+
+      <label class="text-xs text-[#868c96] whitespace-nowrap">
+        Simulated load
+      </label>
+
+      <input type="range"
+             id="loadSlider"
+             min="0"
+             max="100"
+             value="30"
+             class="flex-1 accent-[#4fb8b0]">
+
+      <span id="loadVal"
+            class="font-mono text-[12.5px] text-[#4fb8b0] min-w-[44px] text-right">
+        30%
+      </span>
+    </div>
+
+  </div>
+
+
+  <!-- MAIN GRID -->
+  <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-4 mb-4">
+
+    <!-- GAUGE -->
+    <div class="bg-[#1c2025] border border-[#2b3038] rounded p-5
+                flex flex-col items-center justify-center text-center">
+
+      <div class="text-[11px] text-[#868c96] tracking-wider mb-3.5">
+        STATE OF CHARGE
+      </div>
+```
