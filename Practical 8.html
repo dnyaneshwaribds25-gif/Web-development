@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        .container {
+            width: 400px;
+            max-width: 90%;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Registration</h1>
+
+        <form id="registrationForm">
+
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email</label>
+            <input type="text" id="email" placeholder="Enter your email">
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password">
+
+            <label>Mobile Number</label>
+            <input type="text" id="mobile" placeholder="Enter mobile number">
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <div id="message"></div>
+
+    </div>
+
+    <script>
+
+        document.getElementById("registrationForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+            let mobile = document.getElementById("mobile").value.trim();
+
+            let message = document.getElementById("message");
+
+            // Check mandatory fields
+            if (name === "" || email === "" ||
+                password === "" || mobile === "") {
+
+                message.innerHTML = "Please fill all fields.";
+                message.style.color = "red";
+                return;
+            }
+
+            // Email validation
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (!emailPattern.test(email)) {
+                message.innerHTML = "Enter a valid email address.";
+                message.style.color = "red";
+                return;
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                message.innerHTML =
+                    "Password must be at least 6 characters.";
+                message.style.color = "red";
+                return;
+            }
+
+            // Mobile validation
+            let mobilePattern = /^[0-9]{10}$/;
+
+            if (!mobilePattern.test(mobile)) {
+                message.innerHTML =
+                    "Mobile number must contain 10 digits.";
+                message.style.color = "red";
+                return;
+            }
+
+            // Successful registration
+            message.innerHTML = "Registration Successful!";
+            message.style.color = "green";
+
+        });
+
+    </script>
+
+</body>
+</html>
